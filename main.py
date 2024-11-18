@@ -2,16 +2,44 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 import PIL.Image
+import requests
 
 load_dotenv()
 
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+gemini_api_key = os.environ["GEMINI_API_KEY"]
+if not gemini_api_key:
+    raise ValueError("No GEMINI_API_KEY set for generativeai")
+
+spoonacular_api_key = os.environ["SPOONACULAR_API_KEY"]
+if not spoonacular_api_key:
+    raise ValueError("No SPOONACULAR_API_KEY set for spoonacular")
+
+
+recipe_endpoints = "https://api.spoonacular.com/recipes/findByIngredients"
+
+
+genai.configure(api_key=gemini_api_key)
 
 model = genai.GenerativeModel('models/gemini-1.5-flash')
+# pick a image
+fridge_img = PIL.Image.open("fridge-organization-1.jpg")
 
-burger_img = PIL.Image.open("burger.jpg")
+prompt = 'Give me only list of ingredients currently in the provided image in comma seperated and plain text format with only specific ingredients'
 
-prompt = 'Write me a description of this provided image'
-response = model.generate_content([prompt,burger_img])
+print("Prompt: ", prompt)
 
-print(response.text)
+# asking LLM ( Gemini ) to generate content based on the prompt and image
+response = model.generate_content([prompt,fridge_img])
+
+list_of_ingredients = response.text.replace(" ","")
+print("Answer: ", list_of_ingredients)
+
+print("Gathering recipes for the following ingredients: ", list_of_ingredients)
+
+# get request to spoonacular api
+response = requests.get(recipe_endpoints, params={"apiKey": spoonacular_api_key, "ingredients": list_of_ingredients, "number": 5})
+
+if response.status_code == 200:
+   list_recipes = response.json()
+   for i in list_recipes:
+       print(i["title"])
