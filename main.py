@@ -22,7 +22,8 @@ genai.configure(api_key=gemini_api_key)
 
 model = genai.GenerativeModel('models/gemini-1.5-flash')
 # pick a image
-fridge_img = PIL.Image.open("fridge-organization-1.jpg")
+img_path = input("Enter the path of the image: ")
+fridge_img = PIL.Image.open(img_path)
 
 prompt = 'Give me only list of ingredients currently in the provided image in comma seperated and plain text format with only specific ingredients'
 
