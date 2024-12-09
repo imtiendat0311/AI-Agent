@@ -111,3 +111,52 @@ python src/main.py
 
     Enter the path of the image: /path/to/ingredients.jpg
     AI: Detected ingredients: tomatoes, onions, garlic.
+
+### Step 3: Recipe Recommendation
+
+    AI: Based on your profile and the detected ingredients, we recommend:
+    - Recipe: Spaghetti Marinara
+    - Grade: 9/10
+    - Reason: It fits your time constraints, uses your ingredients, and matches your dietary preferences.
+## Design Details
+
+### Agent Structure
+<ul>
+  <li>Agent 1: Asks questions to build the user profile.</li>
+  <li>Agent 2: Summarizes the user profile from the conversation.</li>
+  <li>Agent 3: Detects ingredients from uploaded images.</li>
+  <li>Agent 4: Grades recipes based on the user profile.</li>
+  <li>Agent 5: Selects the best recipe among graded options.</li>
+</ul>
+
+### State Machine
+Manages the flow of the program:
+<ol>
+  <li>Create user profile: Builds user profile.</li>
+  <li>Find recipe recommendation from the input picture: Detects ingredients and searches for recipes.</li>
+  <li>Give recipe recommendation: Recommends a recipe based on grading.</li>
+  <li>Last state: Restarts or exits.</li>
+</ol>
+
+### Self-Propagation Mechanism
+The agent autonomously:
+<ol>
+  <li>Create user profile: Builds user profile.</li>
+  <li>Fetches recipes.</li>
+  <li>Grades and recommends recipes without manual intervention.</li>
+
+## Future Improvements
+
+<ul>
+  <li>Better Ingredient Detection: Incorporate advanced vision models for accuracy.</li>
+  <li>Multilingual Support: Expand the agent's language capabilities.</li>
+  <li>Enhanced Recipe Filtering: Use nutrition data for more tailored recommendations.</li>
+</ul>
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contributors
+Hoan Lam, Dat Nguyen, Khoi Tran
+
+For questions or suggestions, feel free to open an issue.
