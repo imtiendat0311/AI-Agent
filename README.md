@@ -74,3 +74,40 @@ This project is a conversational AI agent that recommends recipes based on user 
     │   ├── main.py             # Entry point of the application
     variables
     ├── LICENSE                 # License information
+```
+## How to Use
+
+### Start the Program:
+```bash
+python src/main.py
+```
+### Follow the Prompts:
+<ol>
+  <li>Answer questions about your cooking preferences.</li>
+  <li>Upload an image of ingredients when prompted.</li>
+  <li>Review the recipes suggested and their reasoning.</li>
+</ol>
+
+### Interact with the Agent:
+<ol>
+  <li>Confirm if you want to proceed with a recipe or explore other options.</li>
+  <li>Restart the process if needed.</li>
+</ol>
+
+## Example Usage
+### Step 1: Create User Profile
+
+    AI: What is your typical time investment for cooking?
+    User: Around 30 minutes per meal.
+    ...
+    AI: Thank you! We've created a user profile based on your preferences.
+
+### Step 2: Detect Ingredients
+
+    Enter the path of the image: /path/to/ingredients.jpg
+    AI: Detected ingredients: tomatoes, onions, garlic.
+
+### Step 2: Detect Ingredients
+
+    Enter the path of the image: /path/to/ingredients.jpg
+    AI: Detected ingredients: tomatoes, onions, garlic.
