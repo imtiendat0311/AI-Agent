@@ -144,6 +144,7 @@ The agent autonomously:
   <li>Create user profile: Builds user profile.</li>
   <li>Fetches recipes.</li>
   <li>Grades and recommends recipes without manual intervention.</li>
+</ol>
 
 ## Future Improvements
 
